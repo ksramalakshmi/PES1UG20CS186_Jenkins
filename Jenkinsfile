@@ -3,14 +3,14 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        g++ main2.cpp
+        g++ main2.cpp -o main2file
         build PES1UG20CS186-1
       }
     }
     
     stage('Test') {
       steps{
-        ./a.out
+        ./main2file
       }
     }
     
