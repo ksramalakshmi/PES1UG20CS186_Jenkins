@@ -3,21 +3,15 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        g++ main2.cpp -o main2file
-        build PES1UG20CS186-1
+        sh "make -C main"
+                echo 'Build stage completed'
       }
     }
     
     stage('Test') {
       steps{
-        ./main2file
-      }
-    }
-    
-    stage('Deploy') {
-      steps{
-        sh 'mvn deploy'
-        echo 'Deployment successful'
+         sh "/var/jenkins_home/workspace/PES1UG20CS186/main/hello_exec"
+         echo 'Testing stage completed'
       }
     }
   }
